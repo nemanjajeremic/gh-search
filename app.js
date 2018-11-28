@@ -12,14 +12,14 @@ searchUser.addEventListener('keyup', (e) => {
         gh.getUser(searchText)
             .then(data => {
                 if (data.profile.message === 'Not Found') {
-                    //this user does not exist
-                    console.log('User does not exist!');
-                    
+                    ui.showAlert('User not found', 'alert alert-danger');
                 } else {
                     ui.showProfile(data.profile);
+                    /* ui.showRepos(data.repos); */
+                    ui.showRepos(data.repos);
                 }
             });
     } else {
-        //clear profile
+        ui.clearProfile();
     }
 });
